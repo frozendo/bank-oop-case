@@ -1,27 +1,29 @@
 package ui;
 
+import account.BankAccount;
+
 import java.util.Scanner;
 
 public class BankConsole {
 
-    private final Scanner scanner;
+    private final UserMessageHelper userMessageHelper;
 
-    public BankConsole(Scanner scanner) {
-        this.scanner = scanner;
+    public BankConsole() {
+        this.userMessageHelper = new UserMessageHelper();
     }
 
-    public void bank(String username) {
+    public void startBank(BankAccount bankAccount) {
+        userMessageHelper.printMessage("------------------------");
+        userMessageHelper.printMessage("Welcome " + bankAccount.getName() + "!!!");
+        userMessageHelper.printMessage("------------------------");
+        bank(bankAccount);
+    }
+
+    private void bank(BankAccount bankAccount) {
         boolean execute = true;
 
         while (execute) {
-            System.out.println("Welcome " + username + ". What do you want to do?");
-            System.out.println("1. Payment");
-            System.out.println("2. Transfer");
-            System.out.println("3. Deposit");
-            System.out.println("4. Withdraw");
-            System.out.println("5. Current Amount");
-
-            int option = scanner.nextInt();
+            int option = userMessageHelper.bankMenu();
 
             switch (option) {
                 case 1 -> {
@@ -39,7 +41,8 @@ public class BankConsole {
                 case 5 -> {
                     // case 5
                 }
-                default -> execute = false;
+                case 6 -> execute = false;
+                default -> bank(bankAccount);
             }
         }
     }

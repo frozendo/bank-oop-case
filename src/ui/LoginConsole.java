@@ -1,28 +1,50 @@
 package ui;
 
-import java.util.Scanner;
+import account.BankAccount;
+import repository.BankAccountRepository;
+import repository.RepositoryFactory;
 
 public class LoginConsole {
 
-    private final Scanner scanner;
+    private final UserMessageHelper userMessageHelper;
+    private final BankAccountRepository bankAccountRepository;
     private final BankConsole bankConsole;
 
-    public LoginConsole(Scanner scanner) {
-        this.scanner = scanner;
-        this.bankConsole = new BankConsole(scanner);
+    public LoginConsole() {
+        this.userMessageHelper = new UserMessageHelper();
+        this.bankAccountRepository = RepositoryFactory.getBankAccountRepository();
+        this.bankConsole = new BankConsole();
+    }
+
+    public void redirectNewAccount(BankAccount bankAccount) {
+        bankConsole.startBank(bankAccount);
     }
 
     public void login() {
-        System.out.println("Document");
-        String document = scanner.next();
-        System.out.println("Password");
-        String password = scanner.next();
+        String document = userMessageHelper.interactiveMessage("Inform your document");
+        String password = userMessageHelper.interactiveMessage("Inform your password");
 
-        if (true) {
-            bankConsole.bank("");
+        var bankAccount = bankAccountRepository.getBankAccountByDocumentAndPassword(document, password);
+
+        if (bankAccount != null) {
+            bankConsole.startBank(bankAccount);
+            return;
         }
+        userMessageHelper.printMessage("Login failed! Document or password are invalid!");
+        userMessageHelper.printMessage("Do you want to try again?");
+        failedLogin();
+    }
 
-        System.out.println("Bye ");
+    private void failedLogin() {
+        String repeatLogin = userMessageHelper.interactiveMessage("No = 0 or Yes = 1");
+        if (repeatLogin.equals("1")) {
+            login();
+            return;
+        }
+        if (repeatLogin.equals("0")) {
+            return;
+        }
+        failedLogin();
     }
 
 }

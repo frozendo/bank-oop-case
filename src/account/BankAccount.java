@@ -29,4 +29,15 @@ public class BankAccount {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getDocument() {
+        return document;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }

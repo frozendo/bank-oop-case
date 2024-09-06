@@ -21,4 +21,14 @@ public class BankAccountRepository {
         return bankAccounts.get(id);
     }
 
+    public BankAccount getBankAccountByDocumentAndPassword(String document, String password) {
+        for (BankAccount bankAccount : bankAccounts.values()) {
+            if (bankAccount.getDocument().equals(document) &&
+                    bankAccount.getPassword().equals(password)) {
+                return bankAccount;
+            }
+        }
+        return null;
+    }
+
 }

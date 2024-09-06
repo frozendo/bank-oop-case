@@ -2,6 +2,7 @@ package ui;
 
 import account.BankAccount;
 import repository.BankAccountRepository;
+import repository.RepositoryFactory;
 
 public class CreateAccountConsole {
 
@@ -10,13 +11,13 @@ public class CreateAccountConsole {
 
     public CreateAccountConsole() {
         this.userMessageHelper = new UserMessageHelper();
-        this.repository = new BankAccountRepository();
+        this.repository = RepositoryFactory.getBankAccountRepository();
     }
 
-    public boolean createAccount() {
+    public BankAccount createAccount() {
         String accountType = getAccountType();
         if (accountType.equalsIgnoreCase("exit")) {
-            return false;
+            return null;
         }
         var bankAccount = getAccountDetails(accountType);
         if (bankAccount.isAccountValid()) {
@@ -26,7 +27,7 @@ public class CreateAccountConsole {
             userMessageHelper.printMessage("Invalid data. Try again or use 'exit' to get back to main menu");
             return createAccount();
         }
-        return true;
+        return bankAccount;
     }
 
     private String getAccountType() {

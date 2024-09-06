@@ -1,0 +1,21 @@
+
+„
+java:S1854"<Remove this useless assignment to local variable "password".(‹Ì¿úÿÿÿÿ8Åíå«œ2J$4fb8455b-e2cf-42c4-970e-f27a32574384
+„
+java:S1854"<Remove this useless assignment to local variable "document".(§“¶Ïüÿÿÿÿ8Æíå«œ2J$a0856250-a213-4f13-a533-0af4e1040f0d
+€
+java:S1854"8Remove this useless assignment to local variable "name".(¤‚ªùÿÿÿÿ8Æíå«œ2J$9c6b7bcc-5fae-40a3-bcae-6bcd0e4117ae
+‚
+java:S1854"?Remove this useless assignment to local variable "accountType".(Ò‡¬ô8Æíå«œ2J$7b9ccf45-9a52-45d3-9ca9-f245948c17d0
+m	java:S106"+Replace this use of System.out by a logger.(ˆ¯•¿8Æíå«œ2J$95853df5-e3ca-427a-95cf-b58e3f6f9774
+s
+java:S1481"0Remove this unused "accountType" local variable.(Ò‡¬ô8Çíå«œ2J$a31fbcef-b9e5-4c93-9856-542f26435d02
+r	java:S106"+Replace this use of System.out by a logger.(ƒçøÜşÿÿÿÿ8Çíå«œ2J$3adcf164-fc7c-4e2e-8055-ecd5cb214e05
+q
+java:S1481")Remove this unused "name" local variable.(¤‚ªùÿÿÿÿ8Çíå«œ2J$620a4c5e-5f80-4cad-9593-96d763076e68
+r	java:S106"+Replace this use of System.out by a logger.(ö‰Êèùÿÿÿÿ8Çíå«œ2J$fd9ea681-c808-4bc6-ac27-13fa5ef8520a
+u
+java:S1481"-Remove this unused "document" local variable.(§“¶Ïüÿÿÿÿ8Çíå«œ2J$26d51a7d-60b6-4f78-8129-57433cae51c1
+m	java:S106"+Replace this use of System.out by a logger.(ÔÈ™Ë8Èíå«œ2J$ec8dd735-3be0-408e-93d4-1a452cefa62b
+u
+java:S1481"-Remove this unused "password" local variable.(‹Ì¿úÿÿÿÿ8Èíå«œ2J$2d14f83c-b3d2-434c-a8d3-8fcc51098613

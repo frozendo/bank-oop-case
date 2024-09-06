@@ -1,0 +1,38 @@
+
+^
+java:S1854"<Remove this useless assignment to local variable "password".(‹Ì¿úÿÿÿÿ8¿çá«œ2
+^
+java:S1854"<Remove this useless assignment to local variable "document".(§“¶Ïüÿÿÿÿ8¿çá«œ2
+Z
+java:S1854"8Remove this useless assignment to local variable "name".(¤‚ªùÿÿÿÿ8¿çá«œ2
+\
+java:S1854"?Remove this useless assignment to local variable "accountType".(Ò‡¬ô8¿çá«œ2
+^
+java:S1854&"<Remove this useless assignment to local variable "password".(‹Ì¿úÿÿÿÿ8¿çá«œ2
+^
+java:S1854$"<Remove this useless assignment to local variable "document".(§“¶Ïüÿÿÿÿ8Àçá«œ2
+G	java:S106"+Replace this use of System.out by a logger.(ÛĞÒ§8Àçá«œ2
+L	java:S106"+Replace this use of System.out by a logger.(ıÏ®¾ıÿÿÿÿ8Àçá«œ2
+G	java:S106"+Replace this use of System.out by a logger.(ÿÿ½®8Àçá«œ2
+G	java:S106"+Replace this use of System.out by a logger.(¯œÎİ8Àçá«œ2
+G	java:S106"+Replace this use of System.out by a logger.(ˆ¯•¿8Áçá«œ2
+M
+java:S1481"0Remove this unused "accountType" local variable.(Ò‡¬ô8Áçá«œ2
+L	java:S106"+Replace this use of System.out by a logger.(ƒçøÜşÿÿÿÿ8Áçá«œ2
+K
+java:S1481")Remove this unused "name" local variable.(¤‚ªùÿÿÿÿ8Áçá«œ2
+L	java:S106"+Replace this use of System.out by a logger.(ö‰Êèùÿÿÿÿ8Âçá«œ2
+O
+java:S1481"-Remove this unused "document" local variable.(§“¶Ïüÿÿÿÿ8Âçá«œ2
+G	java:S106"+Replace this use of System.out by a logger.(ÔÈ™Ë8Âçá«œ2
+O
+java:S1481"-Remove this unused "password" local variable.(‹Ì¿úÿÿÿÿ8Âçá«œ2
+L	java:S106#"+Replace this use of System.out by a logger.(ö‰Êèùÿÿÿÿ8Âçá«œ2
+O
+java:S1481$"-Remove this unused "document" local variable.(§“¶Ïüÿÿÿÿ8Âçá«œ2
+G	java:S106%"+Replace this use of System.out by a logger.(ÔÈ™Ë8Âçá«œ2
+O
+java:S1481&"-Remove this unused "password" local variable.(‹Ì¿úÿÿÿÿ8Ãçá«œ2
+L	java:S106("+Replace this use of System.out by a logger.(‹«ĞÁüÿÿÿÿ8Ãçá«œ2
+H
+java:S1068"+Remove this unused "scanner" private field.(‚´®8Ãçá«œ2

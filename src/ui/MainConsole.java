@@ -10,31 +10,46 @@ public class MainConsole {
 
     public MainConsole(Scanner scanner) {
         this.scanner = scanner;
-        this.createAccountConsole = new CreateAccountConsole(scanner);
+        this.createAccountConsole = new CreateAccountConsole();
         this.loginConsole = new LoginConsole(scanner);
     }
 
     public void start() {
-
-        System.out.println("Welcome to bank-oop-system. What do you want to do?");
         System.out.println("1. Open Account");
         System.out.println("2. Login");
-        System.out.println("Any other number to exit");
+        System.out.println("3. Exit");
 
-        int option = scanner.nextInt();
+        String userOption = scanner.next();
+        int option = 0;
+
+        try {
+            option = Integer.parseInt(userOption);
+        } catch (NumberFormatException e) {
+            errorOption();
+        }
 
         switch (option) {
             case 1 -> {
-                createAccountConsole.createAccount();
-                start();
+                boolean result = createAccountConsole.createAccount();
+                if (result) {
+                    // login
+                } else {
+                    start();
+                }
             }
             case 2 -> loginConsole.login();
-            default -> {
+            case 3 -> {
                 System.out.println("Thank your for use our system! See you soon!");
                 System.exit(0);
             }
+            default -> errorOption();
         }
 
+    }
+
+    private void errorOption() {
+        System.out.println("Please enter a valid option");
+        start();
     }
 
 }

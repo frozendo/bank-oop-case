@@ -1,24 +1,60 @@
 package ui;
 
-import java.util.Scanner;
+import account.BankAccount;
+import repository.BankAccountRepository;
 
 public class CreateAccountConsole {
 
-    private final Scanner scanner;
+    private final UserMessageHelper userMessageHelper;
+    private final BankAccountRepository repository;
 
-    public CreateAccountConsole(Scanner scanner) {
-        this.scanner = scanner;
+    public CreateAccountConsole() {
+        this.userMessageHelper = new UserMessageHelper();
+        this.repository = new BankAccountRepository();
     }
 
-    public void createAccount() {
-        System.out.println("Account Type (Individual or Enterprise)");
-        String accountType = scanner.next();
-        System.out.println("Name");
-        String name = scanner.next();
-        System.out.println("Document");
-        String document =scanner.next();
-        System.out.println("Password");
-        String password = scanner.next();
+    public boolean createAccount() {
+        String accountType = getAccountType();
+        if (accountType.equalsIgnoreCase("exit")) {
+            return false;
+        }
+        var bankAccount = getAccountDetails(accountType);
+        if (bankAccount.isAccountValid()) {
+            repository.save(bankAccount);
+            userMessageHelper.printMessage("Account successfully created");
+        } else {
+            userMessageHelper.printMessage("Invalid data. Try again or use 'exit' to get back to main menu");
+            return createAccount();
+        }
+        return true;
+    }
+
+    private String getAccountType() {
+        String accountType = userMessageHelper.interactiveMessage("Account Type (Individual or Enterprise)");
+        if (validateAccountType(accountType)) {
+            return accountType;
+        }
+        userMessageHelper.printMessage("Invalid account type! Digit 'Individual' or 'Enterprise'. Use 'exit' to get back to main menu");
+        return getAccountType();
+    }
+
+    private boolean validateAccountType(String accountType) {
+        return accountType.equalsIgnoreCase("individual") ||
+                accountType.equalsIgnoreCase("enterprise") ||
+                accountType.equalsIgnoreCase("exit");
+    }
+
+    private BankAccount getAccountDetails(String accountType) {
+        String name = userMessageHelper.interactiveMessage("What's your name?");
+        String document = userMessageHelper.interactiveMessage("Document (11 numbers)");
+        String password = userMessageHelper.interactiveMessage("Password (At least 6 characters)");
+
+        return new BankAccount(
+                accountType,
+                name,
+                document,
+                password
+        );
     }
 
 }

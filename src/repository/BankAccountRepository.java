@@ -31,4 +31,13 @@ public class BankAccountRepository {
         return null;
     }
 
+    public BankAccount getBankAccountByDocument(String document) {
+        for (BankAccount bankAccount : bankAccounts.values()) {
+            if (bankAccount.getDocument().equals(document)) {
+                return bankAccount;
+            }
+        }
+        return null;
+    }
+
 }

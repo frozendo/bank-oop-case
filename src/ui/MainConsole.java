@@ -7,9 +7,9 @@ public class MainConsole {
     private final LoginConsole loginConsole;
 
     public MainConsole() {
-        this.userMessageHelper = new UserMessageHelper();
-        this.createAccountConsole = new CreateAccountConsole();
-        this.loginConsole = new LoginConsole();
+        this.userMessageHelper = ConsoleFactory.getUserMessageHelper();
+        this.createAccountConsole = ConsoleFactory.getCreateAccountConsole();
+        this.loginConsole = ConsoleFactory.getLoginConsole();
     }
 
     public void start() {

@@ -10,7 +10,7 @@ public class CreateAccountConsole {
     private final BankAccountRepository repository;
 
     public CreateAccountConsole() {
-        this.userMessageHelper = new UserMessageHelper();
+        this.userMessageHelper = ConsoleFactory.getUserMessageHelper();
         this.repository = RepositoryFactory.getBankAccountRepository();
     }
 

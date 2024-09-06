@@ -11,9 +11,9 @@ public class LoginConsole {
     private final BankConsole bankConsole;
 
     public LoginConsole() {
-        this.userMessageHelper = new UserMessageHelper();
+        this.userMessageHelper = ConsoleFactory.getUserMessageHelper();
         this.bankAccountRepository = RepositoryFactory.getBankAccountRepository();
-        this.bankConsole = new BankConsole();
+        this.bankConsole = ConsoleFactory.getBankConsole();
     }
 
     public void redirectNewAccount(BankAccount bankAccount) {

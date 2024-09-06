@@ -2,6 +2,8 @@ package repository;
 
 public class RepositoryFactory {
 
+    private RepositoryFactory() {}
+
     private static BankAccountRepository bankAccountRepository;
 
     public static BankAccountRepository getBankAccountRepository() {

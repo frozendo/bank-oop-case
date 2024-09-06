@@ -9,7 +9,7 @@ public class BankConsole {
     private final UserMessageHelper userMessageHelper;
 
     public BankConsole() {
-        this.userMessageHelper = new UserMessageHelper();
+        this.userMessageHelper = ConsoleFactory.getUserMessageHelper();
     }
 
     public void startBank(BankAccount bankAccount) {

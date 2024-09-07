@@ -1,6 +1,6 @@
 package bank.movement;
 
-import account.BankAccount;
+import bank.account.BankAccount;
 import bank.payment.FinancialOperationEnum;
 
 public interface Movement {

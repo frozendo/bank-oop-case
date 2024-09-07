@@ -1,6 +1,6 @@
 package ui;
 
-import account.BankAccount;
+import bank.account.BankAccount;
 import repository.BankAccountRepository;
 import repository.RepositoryFactory;
 

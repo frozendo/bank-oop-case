@@ -1,4 +1,4 @@
-package account;
+package bank.account;
 
 public class EnterpriseAccount extends BankAccount {
 
@@ -21,7 +21,7 @@ public class EnterpriseAccount extends BankAccount {
 
     @Override
     public boolean releaseAccountPrize() {
-        //enterprise account has no prize
+        //enterprise bank.account has no prize
         return false;
     }
 

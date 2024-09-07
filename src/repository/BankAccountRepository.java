@@ -1,6 +1,6 @@
 package repository;
 
-import account.BankAccount;
+import bank.account.BankAccount;
 
 import java.util.HashMap;
 import java.util.Map;

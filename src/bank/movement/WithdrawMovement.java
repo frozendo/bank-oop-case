@@ -1,6 +1,6 @@
 package bank.movement;
 
-import account.BankAccount;
+import bank.account.BankAccount;
 import bank.payment.FinancialOperationEnum;
 
 import java.util.HashMap;
@@ -26,7 +26,7 @@ public class WithdrawMovement implements Movement {
             }
             return "There is no enough balance to withdraw";
         }
-        return "Max withdraw quantity achieve by account";
+        return "Max withdraw quantity achieve by bank.account";
     }
 
     private boolean canDoWithdraw(String bankAccountId) {

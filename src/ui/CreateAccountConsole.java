@@ -1,9 +1,9 @@
 package ui;
 
-import account.AccountTypeEnum;
-import account.BankAccount;
-import account.EnterpriseAccount;
-import account.IndividualAccount;
+import bank.account.AccountTypeEnum;
+import bank.account.BankAccount;
+import bank.account.EnterpriseAccount;
+import bank.account.IndividualAccount;
 import repository.BankAccountRepository;
 import repository.RepositoryFactory;
 
@@ -53,7 +53,7 @@ public class CreateAccountConsole {
         if (accountType.equalsIgnoreCase("exit")) {
             return null;
         }
-        userMessageHelper.printMessage("Invalid account type! Digit 'Individual' or 'Enterprise'. Use 'exit' to get back to main menu");
+        userMessageHelper.printMessage("Invalid bank.account type! Digit 'Individual' or 'Enterprise'. Use 'exit' to get back to main menu");
         return getAccountType();
     }
 

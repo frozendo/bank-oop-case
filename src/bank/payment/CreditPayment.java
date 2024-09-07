@@ -1,6 +1,6 @@
 package bank.payment;
 
-import account.BankAccount;
+import bank.account.BankAccount;
 
 public class CreditPayment {
     private final Payment payment;

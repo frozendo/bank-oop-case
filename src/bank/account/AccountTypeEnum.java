@@ -1,4 +1,4 @@
-package account;
+package bank.account;
 
 public enum AccountTypeEnum {
     INDIVIDUAL, ENTERPRISE;

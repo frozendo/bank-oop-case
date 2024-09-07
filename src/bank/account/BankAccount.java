@@ -89,4 +89,12 @@ public abstract class BankAccount {
     public String getPassword() {
         return password;
     }
+
+    public Long getBalance() {
+        return balance;
+    }
+
+    public Long getCurrentCreditBalance() {
+        return currentCreditBalance;
+    }
 }

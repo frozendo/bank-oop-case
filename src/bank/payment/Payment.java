@@ -6,16 +6,21 @@ public class Payment {
 
     public String executePayment(BankAccount bankAccount,
                                  FinancialOperationEnum financialOperation,
-                                 long paymentAmount) {
-        boolean result = bankAccount.updateBalance(financialOperation, paymentAmount);
+                                 double paymentAmount) {
+        boolean result = bankAccount.updateBalance(financialOperation, convertAmountToCents(paymentAmount));
         return resultMessage(result);
     }
 
-    public String resultMessage(boolean operationResult) {
+    private String resultMessage(boolean operationResult) {
         if (operationResult) {
             return "Payment successful";
         }
         return "There is no enough balance to execute payment";
+    }
+
+    private Long convertAmountToCents(double paymentAmount) {
+        double convertedAmount = paymentAmount * 100;
+        return (long)convertedAmount;
     }
 
 

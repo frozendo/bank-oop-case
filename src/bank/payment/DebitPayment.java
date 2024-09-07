@@ -9,7 +9,7 @@ public class DebitPayment {
         this.payment = new Payment();
     }
 
-    public String executeDebitPayment(BankAccount bankAccount, long paymentAmount) {
+    public String executeDebitPayment(BankAccount bankAccount, double paymentAmount) {
         return payment.executePayment(bankAccount, FinancialOperationEnum.DEBIT_CARD, paymentAmount);
     }
 

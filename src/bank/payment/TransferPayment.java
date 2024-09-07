@@ -11,11 +11,14 @@ public class TransferPayment {
 
     public String executeTransferPayment(BankAccount originBankAccount,
                                          BankAccount destinationBankAccount,
-                                         long paymentAmount) {
+                                         double paymentAmount) {
         String paymentResult = payment.executePayment(originBankAccount, FinancialOperationEnum.TRANSFER, paymentAmount);
         if (paymentResult.equals("Payment successful")) {
+            double convertedAmount = paymentAmount * 100;
+            long centsAmount = (long)convertedAmount;
+
             boolean depositResult = destinationBankAccount
-                    .updateBalance(FinancialOperationEnum.DEPOSIT, paymentAmount);
+                    .updateBalance(FinancialOperationEnum.DEPOSIT, centsAmount);
             if (depositResult) {
                 return "Payment successful";
             }

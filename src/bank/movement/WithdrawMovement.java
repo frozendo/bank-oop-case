@@ -17,9 +17,10 @@ public class WithdrawMovement implements Movement {
     }
 
     @Override
-    public String movementMoney(BankAccount bankAccount, FinancialOperationEnum financialOperation, long amount) {
+    public String movementMoney(BankAccount bankAccount, double amount) {
+        Long centsAmount = convertAmountToCents(amount);
         if (canDoWithdraw(bankAccount.getId())) {
-            boolean result = bankAccount.updateBalance(financialOperation, amount);
+            boolean result = bankAccount.updateBalance(FinancialOperationEnum.WITHDRAW, centsAmount);
             if (result) {
                 updateWithdrawByAccount(bankAccount.getId());
                 return "Withdraw successful";
@@ -40,6 +41,11 @@ public class WithdrawMovement implements Movement {
             qtdTransferByAccount = this.withdrawByAccount.get(bankAccountId);
         }
         this.withdrawByAccount.put(bankAccountId, qtdTransferByAccount + 1);
+    }
+
+    private Long convertAmountToCents(double paymentAmount) {
+        double convertedAmount = paymentAmount * 100;
+        return (long)convertedAmount;
     }
 
 }

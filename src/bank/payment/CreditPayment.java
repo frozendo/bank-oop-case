@@ -3,14 +3,14 @@ package bank.payment;
 import bank.account.BankAccount;
 
 public class CreditPayment {
-    private final Payment payment;
 
-    public CreditPayment() {
-        this.payment = new Payment();
-    }
-
-    public String executeCreditPayment(BankAccount bankAccount, long paymentAmount) {
-        boolean result = bankAccount.spendCreditBalance(paymentAmount);
-        return payment.resultMessage(result);
+    public String executeCreditPayment(BankAccount bankAccount, double paymentAmount) {
+        double convertedAmount = paymentAmount * 100;
+        long longAmount = (long)convertedAmount;
+        boolean result = bankAccount.spendCreditBalance(longAmount);
+        if (result) {
+            return "Payment successful";
+        }
+        return "There is no enough credit balance to execute payment";
     }
 }

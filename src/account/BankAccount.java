@@ -1,6 +1,6 @@
 package account;
 
-import bank.payments.FinancialOperationEnum;
+import bank.payment.FinancialOperationEnum;
 
 import java.util.UUID;
 

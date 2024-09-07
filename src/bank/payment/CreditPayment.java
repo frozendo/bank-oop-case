@@ -1,14 +1,16 @@
-package bank.payments;
+package bank.payment;
 
 import account.BankAccount;
 
-public class CreditPayment implements Payment {
-    @Override
-    public String execute(BankAccount bankAccount, long paymentAmount) {
+public class CreditPayment {
+    private final Payment payment;
+
+    public CreditPayment() {
+        this.payment = new Payment();
+    }
+
+    public String executeCreditPayment(BankAccount bankAccount, long paymentAmount) {
         boolean result = bankAccount.spendCreditBalance(paymentAmount);
-        if (result) {
-            return "Credit payment successful";
-        }
-        return "There is no enough credit balance to execute payment";
+        return payment.resultMessage(result);
     }
 }

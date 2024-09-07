@@ -1,16 +1,16 @@
-package bank.payments;
+package bank.payment;
 
 import account.BankAccount;
 
-public class DebitPayment implements Payment {
+public class DebitPayment {
+    private final Payment payment;
 
-    @Override
-    public String execute(BankAccount bankAccount, long paymentAmount) {
-        boolean result = bankAccount.updateBalance(FinancialOperationEnum.DEBIT_CARD, paymentAmount);
-        if (result) {
-            return "Debit payment successful";
-        }
-        return "There is no enough balance to execute payment";
+    public DebitPayment() {
+        this.payment = new Payment();
+    }
+
+    public String executeDebitPayment(BankAccount bankAccount, long paymentAmount) {
+        return payment.executePayment(bankAccount, FinancialOperationEnum.DEBIT_CARD, paymentAmount);
     }
 
 }

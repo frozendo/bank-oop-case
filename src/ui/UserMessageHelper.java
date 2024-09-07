@@ -27,11 +27,9 @@ public class UserMessageHelper {
     public int bankMenu() {
         System.out.println("What do you want to do?");
         System.out.println("1. Payment");
-        System.out.println("2. Transfer");
-        System.out.println("3. Deposit");
-        System.out.println("4. Withdraw");
-        System.out.println("5. Current Amount");
-        System.out.println("6. Exit");
+        System.out.println("2. Movements");
+        System.out.println("3. Current Amount");
+        System.out.println("4. Exit");
 
         String userOption = scanner.next();
 

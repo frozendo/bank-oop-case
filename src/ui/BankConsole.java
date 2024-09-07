@@ -2,8 +2,6 @@ package ui;
 
 import account.BankAccount;
 
-import java.util.Scanner;
-
 public class BankConsole {
 
     private final UserMessageHelper userMessageHelper;

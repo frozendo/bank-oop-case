@@ -1,4 +1,4 @@
-package bank.payments;
+package bank.payment;
 
 public enum FinancialOperationEnum {
 

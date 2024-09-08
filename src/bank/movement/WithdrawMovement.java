@@ -27,12 +27,12 @@ public class WithdrawMovement implements Movement {
             }
             return "There is no enough balance to withdraw";
         }
-        return "Max withdraw quantity achieve by bank.account";
+        return "Max withdraw quantity achieve by " + bankAccount.getId();
     }
 
     private boolean canDoWithdraw(String bankAccountId) {
         int qtdTransferByAccount = withdrawByAccount.getOrDefault(bankAccountId, 0);
-        return qtdTransferByAccount >= MAX_WITHDRAW_BY_ACCOUNT;
+        return qtdTransferByAccount < MAX_WITHDRAW_BY_ACCOUNT;
     }
 
     private void updateWithdrawByAccount(String bankAccountId) {

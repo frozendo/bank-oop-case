@@ -1,6 +1,8 @@
 package ui;
 
+import bank.account.AccountTypeEnum;
 import bank.account.BankAccount;
+import bank.account.IndividualAccount;
 import bank.movement.Movement;
 import bank.movement.MovementFactory;
 import bank.payment.PaymentFactory;
@@ -35,14 +37,14 @@ public class BankConsole {
                 case 2 -> doMovement(bankAccount);
                 case 3 -> doAccountStatus(bankAccount);
                 case 4 -> execute = false;
-                default -> bank(bankAccount);
+                default -> userMessageHelper.printMessage("Invalid option! Inform a number between 1 and 4");
             }
         }
     }
 
     private void doPayment(BankAccount bankAccount) {
         int paymentChoose = userMessageHelper.paymentMenu();
-        var paymentAmount = userMessageHelper.getAmountForPayment();
+        var paymentAmount = userMessageHelper.getAmountForPayment("pay");
 
         String result;
 
@@ -72,13 +74,13 @@ public class BankConsole {
         }
 
         userMessageHelper.printMessage(result);
-        bank(bankAccount);
 
     }
 
     private void doMovement(BankAccount bankAccount) {
-        int movementChoose = userMessageHelper.paymentMenu();
-        var paymentAmount = userMessageHelper.getAmountForPayment();
+        int movementChoose = userMessageHelper.movementMenu();
+        String action = movementChoose == 1 ? "deposit" : "withdraw";
+        var paymentAmount = userMessageHelper.getAmountForPayment(action);
 
         String result;
 
@@ -90,7 +92,6 @@ public class BankConsole {
         }
 
         userMessageHelper.printMessage(result);
-        bank(bankAccount);
     }
 
     private void doAccountStatus(BankAccount bankAccount) {
@@ -100,7 +101,12 @@ public class BankConsole {
 
         userMessageHelper.printMessage("Current Balance = " + bankAccount.getBalance());
         userMessageHelper.printMessage("Current Credit Balance = " + bankAccount.getCurrentCreditBalance());
-        bank(bankAccount);
+        userMessageHelper.printMessage("Current Available Credit = " + bankAccount.getAvailableLimit());
+
+        if (AccountTypeEnum.INDIVIDUAL.equals(bankAccount.getAccountType())) {
+            IndividualAccount individualAccount = (IndividualAccount) bankAccount;
+            userMessageHelper.printMessage("Current Special Prize Balance = " + individualAccount.getSpecialCreditBalance());
+        }
     }
 
 }

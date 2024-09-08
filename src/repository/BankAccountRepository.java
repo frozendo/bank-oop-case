@@ -17,20 +17,6 @@ public class BankAccountRepository {
         bankAccounts.put(bankAccount.getId(), bankAccount);
     }
 
-    public BankAccount get(String id) {
-        return bankAccounts.get(id);
-    }
-
-    public BankAccount getBankAccountByDocumentAndPassword(String document, String password) {
-        for (BankAccount bankAccount : bankAccounts.values()) {
-            if (bankAccount.getDocument().equals(document) &&
-                    bankAccount.getPassword().equals(password)) {
-                return bankAccount;
-            }
-        }
-        return null;
-    }
-
     public BankAccount getBankAccountByDocument(String document) {
         for (BankAccount bankAccount : bankAccounts.values()) {
             if (bankAccount.getDocument().equals(document)) {

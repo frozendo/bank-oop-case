@@ -10,44 +10,26 @@ public abstract class BankAccount {
     private final AccountTypeEnum accountType;
     private final String name;
     private final String document;
-    private final String password;
 
     private Long balance;
     private Long currentCreditBalance;
     protected Long limitCreditBalance;
 
-    protected BankAccount(AccountTypeEnum accountType, String name, String document, String password) {
+    protected BankAccount(AccountTypeEnum accountType, String name, String document) {
         this.id = UUID.randomUUID().toString();
         this.accountType = accountType;
         this.name = name;
         this.document = document;
-        this.password = password;
 
         this.balance = 0L;
         this.currentCreditBalance = 0L;
     }
 
     public abstract boolean isDocumentValid();
-    public abstract boolean releaseAccountPrize();
+    public abstract void releaseAccountPrize();
 
     public boolean isBankAccountValid() {
-        if (this.password.length() < 6) {
-            return false;
-        }
         return isDocumentValid();
-    }
-
-    private void increaseBalance(long amount) {
-        this.balance += amount;
-    }
-
-    private boolean updateBalance(long amount) {
-        if (this.balance < amount) {
-            return false;
-        }
-
-        this.balance -= amount;
-        return true;
     }
 
     public boolean updateBalance(FinancialOperationEnum financialOperationEnum, long amount) {
@@ -56,7 +38,7 @@ public abstract class BankAccount {
             return true;
         }
 
-        return updateBalance(amount);
+        return decreaseBalance(amount);
     }
 
     public boolean spendCreditBalance(long amount) {
@@ -68,14 +50,25 @@ public abstract class BankAccount {
         return true;
     }
 
-    public void releaseCreditBalance(long amount) {
-        if (currentCreditBalance > 0) {
-            currentCreditBalance -= amount;
+    private void increaseBalance(long amount) {
+        this.balance += amount;
+    }
+
+    private boolean decreaseBalance(long amount) {
+        if (this.balance < amount) {
+            return false;
         }
+
+        this.balance -= amount;
+        return true;
     }
 
     public String getId() {
         return id;
+    }
+
+    public AccountTypeEnum getAccountType() {
+        return accountType;
     }
 
     public String getName() {
@@ -86,15 +79,15 @@ public abstract class BankAccount {
         return document;
     }
 
-    public String getPassword() {
-        return password;
+    public double getBalance() {
+        return (double) balance / 100;
     }
 
-    public Long getBalance() {
-        return balance;
+    public double getCurrentCreditBalance() {
+        return (double) currentCreditBalance / 100;
     }
 
-    public Long getCurrentCreditBalance() {
-        return currentCreditBalance;
+    public double getAvailableLimit() {
+        return (double) (limitCreditBalance - currentCreditBalance) / 100;
     }
 }

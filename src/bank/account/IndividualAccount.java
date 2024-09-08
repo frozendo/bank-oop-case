@@ -6,8 +6,8 @@ public class IndividualAccount extends BankAccount {
     
     private Long specialCreditBalance;
 
-    public IndividualAccount(String name, String document, String password) {
-        super(AccountTypeEnum.INDIVIDUAL, name, document, password);
+    public IndividualAccount(String name, String document) {
+        super(AccountTypeEnum.INDIVIDUAL, name, document);
         this.limitCreditBalance = 50_000L;
         this.specialCreditBalance = 0L;
     }
@@ -18,20 +18,18 @@ public class IndividualAccount extends BankAccount {
     }
 
     @Override
-    public boolean releaseAccountPrize() {
+    public void releaseAccountPrize() {
         this.specialCreditBalance = 50_000L;
-        return false;
     }
 
     @Override
     public boolean updateBalance(FinancialOperationEnum financialOperation, long amount) {
-        if (FinancialOperationEnum.DEBIT_CARD.equals(financialOperation) || 
-                FinancialOperationEnum.TRANSFER.equals(financialOperation)) {
+        if (FinancialOperationEnum.DEBIT_CARD.equals(financialOperation)) {
             boolean isDebitPayed = spendAllFromSpecialCredit(amount);
             if (!isDebitPayed) {
                 return spendPartialFromSpecialCreditAndUseBalance(financialOperation, amount);
             }
-            return false;
+            return true;
         }
         return super.updateBalance(financialOperation, amount);
     }
@@ -46,11 +44,15 @@ public class IndividualAccount extends BankAccount {
 
     private boolean spendPartialFromSpecialCreditAndUseBalance(FinancialOperationEnum financialOperation, long amount) {
         long diff = amount - specialCreditBalance;
-        boolean updateResult = updateBalance(financialOperation, diff);
+        boolean updateResult = super.updateBalance(financialOperation, diff);
         if (updateResult) {
             this.specialCreditBalance = 0L;
             return true;
         }
         return false;
+    }
+
+    public double getSpecialCreditBalance() {
+        return (double) specialCreditBalance / 100;
     }
 }

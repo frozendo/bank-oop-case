@@ -69,10 +69,11 @@ public class UserMessageHelper {
         }
     }
 
-    public Double getAmountForPayment() {
-        System.out.println("How much do you want to pay?");
+    public Double getAmountForPayment(String actionString) {
+        System.out.println("How much do you want to " + actionString + "?");
         var userAmount = scanner.next();
         try {
+            userAmount = userAmount.replace(",", ".");
             return Double.parseDouble(userAmount);
         } catch (NumberFormatException e) {
             return 0.0;
@@ -86,8 +87,7 @@ public class UserMessageHelper {
 
     public String interactiveMessage(String message) {
         System.out.println(message);
-        String userValue = scanner.next();
-        return userValue;
+        return scanner.next();
     }
 
     public void printMessage(String message) {

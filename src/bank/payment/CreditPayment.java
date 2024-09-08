@@ -6,8 +6,8 @@ public class CreditPayment {
 
     public String executeCreditPayment(BankAccount bankAccount, double paymentAmount) {
         double convertedAmount = paymentAmount * 100;
-        long longAmount = (long)convertedAmount;
-        boolean result = bankAccount.spendCreditBalance(longAmount);
+        long centsAmount = (long)convertedAmount;
+        boolean result = bankAccount.spendCreditBalance(centsAmount);
         if (result) {
             return "Payment successful";
         }

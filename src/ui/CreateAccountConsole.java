@@ -67,12 +67,11 @@ public class CreateAccountConsole {
 
         String name = userMessageHelper.interactiveMessage("What's your name?");
         String document = userMessageHelper.interactiveMessage("Document (%s numbers)".formatted(documentLengthRequired));
-        String password = userMessageHelper.interactiveMessage("Password (At least 6 characters)");
 
         if (AccountTypeEnum.ENTERPRISE.equals(accountType)) {
-            return createEnterpriseAccount(name, document, password);
+            return createEnterpriseAccount(name, document);
         }
-        return createIndividualAccount(name, document, password);
+        return createIndividualAccount(name, document);
     }
 
     private String getDocumentLengthForAccountType(AccountTypeEnum accountType) {
@@ -82,19 +81,17 @@ public class CreateAccountConsole {
         return "11";
     }
 
-    private BankAccount createIndividualAccount(String name, String document, String password) {
+    private BankAccount createIndividualAccount(String name, String document) {
         return new IndividualAccount(
                 name,
-                document,
-                password
+                document
         );
     }
 
-    private BankAccount createEnterpriseAccount(String name, String document, String password) {
+    private BankAccount createEnterpriseAccount(String name, String document) {
         return new EnterpriseAccount(
                 name,
-                document,
-                password
+                document
         );
     }
 

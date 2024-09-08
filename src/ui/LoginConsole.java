@@ -22,9 +22,8 @@ public class LoginConsole {
 
     public void login() {
         String document = userMessageHelper.interactiveMessage("Inform your document");
-        String password = userMessageHelper.interactiveMessage("Inform your password");
 
-        var bankAccount = bankAccountRepository.getBankAccountByDocumentAndPassword(document, password);
+        var bankAccount = bankAccountRepository.getBankAccountByDocument(document);
 
         if (bankAccount != null) {
             bankConsole.startBank(bankAccount);
